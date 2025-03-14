@@ -104,41 +104,40 @@ void task_3_3() {
 /*
  * \name main
  * \return int результат завершения программы
- * \param argc, argv кол-во передаваемых аргументов и сами аргументы
  */
-int main(int argc, char *argv[]) { // объявление функции main
+int main() { // объявление функции main
 
-    //переменные строкового типа, значения которых будут использоваться для вывода в консоль
-    std::string asterix_sing = "*****";
-    std::string company = "ТУСУР";
-    std::string faculty = "Факультет: Доп. Образование";
-    std::string group = "Группа: 315";
-    std::string student = "Студент: Сидоров Игорь";
-    std::string footer = "Томск 2021";
+  //переменные строкового типа, значения которых будут использоваться для вывода в консоль
+  std::string asterix_sing = "*****";
+  std::string company = "ТУСУР";
+  std::string faculty = "Факультет: Доп. Образование";
+  std::string group = "Группа: 315";
+  std::string student = "Студент: Сидоров Игорь";
+  std::string footer = "Томск 2021";
 
-    //значение для установления ширины вывода
-    int header = 30;
-    std::cout << asterix_sing << std::setw(header) << company << std::setw(header - asterix_sing.length()) << asterix_sing << std::endl;
-    std::cout << std::endl;
-    std::cout << std::endl;
+  //значение для установления ширины вывода
+  int header = 30;
+  std::cout << asterix_sing << std::setw(header) << company << std::setw(header - asterix_sing.length()) << asterix_sing << std::endl;
+  std::cout << std::endl;
+  std::cout << std::endl;
 
-    std::cout.width(header + 50);
-    std::cout << faculty << std::endl;
+  std::cout.width(header + 50);
+  std::cout << faculty << std::endl;
 
-    std::cout.width(header + 17);
-    std::cout << group << std::endl;
+  std::cout.width(header + 17);
+  std::cout << group << std::endl;
 
-    std::cout.width(header + 41);
-    std::cout << student << std::endl;
+  std::cout.width(header + 41);
+  std::cout << student << std::endl;
 
-    std::cout.width(header + 8);
-    std::cout << footer << std::endl;
+  std::cout.width(header + 8);
+  std::cout << footer << std::endl;
 
-    task_3_1();
-    task_3_2();
-    task_3_3();
+  task_3_1();
+  task_3_2();
+  task_3_3();
 
-    return 0; //возвращаемое значени
+  return 0; //возвращаемое значени
 } //конец тела функции main (блока main)
 
 //многострочный комментарий с помощью директив
