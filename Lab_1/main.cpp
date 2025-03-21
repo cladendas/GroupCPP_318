@@ -4,7 +4,7 @@
 *
 * Developer: Агамагомедов Вадим Вагифович
 * OS: MacOS
-* locale: 
+* locale: UTF-8
 */
 
 
