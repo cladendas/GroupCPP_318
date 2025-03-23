@@ -136,22 +136,23 @@ void show_sizeof(const std::string type, const int size) {
 }
 
 
-//генерация блоков кода по типу x
+//генерация блоков кода по типу type
 #define TYPE_SIZE(type) {  const type value{0}; \
                     show_sizeof(#type, sizeof(value)); }
 
-
+//генерация блоков кода для вывода мин и макс значений тип type
 #define TYPE_MIN_MAX(type) { \
-    std::cout << "Binary -------" << std::endl; \
-    std::cout << "- min: " << std::bitset<8>{std::numeric_limits<type>::min()} << std::endl; \
-    std::cout << "- max: " << std::bitset<8>{std::numeric_limits<type>::max()} << std::endl; \
-    std::cout << "Octal -------" << std::endl; \
+    const unsigned short bits = 16; \
+    std::cout << "Binary" << std::endl; \
+    std::cout << "- min: " << std::bitset<bits>{std::numeric_limits<type>::min()} << std::endl; \
+    std::cout << "- max: " << std::bitset<bits>{std::numeric_limits<type>::max()} << std::endl; \
+    std::cout << "Octal" << std::endl; \
     std::cout << "- min: " << std::oct << std::numeric_limits<type>::min() << std::endl; \
     std::cout << "- max: " << std::oct << std::numeric_limits<type>::max() << std::endl; \
-    std::cout << "Decimal -------" << std::endl; \
+    std::cout << "Decimal" << std::endl; \
     std::cout << "- min: " << std::dec << std::numeric_limits<type>::min() << std::endl; \
     std::cout << "- max: " << std::dec << std::numeric_limits<type>::max() << std::endl; \
-    std::cout << "hexadecimal -------" << std::endl; \
+    std::cout << "hexadecimal" << std::endl; \
     std::cout << "- min: " << std::hex << std::numeric_limits<type>::min() << std::endl; \
     std::cout << "- max: " << std::hex << std::numeric_limits<type>::max() << std::endl; \
 }
@@ -177,26 +178,78 @@ void task_2() {
 
     std::cout << std::endl;
 
+    std::cout << "unsigned short --------" << std::endl;
     TYPE_MIN_MAX(unsigned short)
 
     std::cout << std::endl;
 
+    std::cout << "unsigned int --------" << std::endl;
     TYPE_MIN_MAX(unsigned int)
 
     std::cout << std::endl;
 
-    // TYPE_MIN_MAX(char)
+    std::cout << "bool --------" << std::endl;
+    TYPE_MIN_MAX(bool)
 
-    // std::cout << std::endl;
+    std::cout << std::endl;
 
+    std::cout << "u_int32_t --------" << std::endl;
     TYPE_MIN_MAX(u_int32_t)
 
-    // std::cout << std::endl;
+    std::cout << std::endl;
 
-    // TYPE_MIN_MAX(double)
+    std::cout << "unsigned long --------" << std::endl;
+    TYPE_MIN_MAX(unsigned long)
 
 }
 
+//рекурсивно получаем сумму введёных чисел
+//quantity - кол-во запросов
+double get_amount(const int quantity) {
+    double amount = 0;
+
+    if (quantity == 0) {
+        return amount;
+    } else {
+        std::cout << "Введите число с точкой: ";
+        double tmp;
+        std::cin >> tmp;
+        amount += tmp;
+        return amount + get_amount(quantity - 1);
+    }
+}
+
+void task_3() {
+    const size_t quantity = 10; //кол-во запросов
+    std::cout << "Сейчас у вас запросят 10 раз ввод числа с точкой" << std::endl;
+    double amount = get_amount(quantity);
+
+    std::cout << "Среднее арифметическое: " << (amount / quantity) << std::endl;
+}
+
+void task_4() {
+    std::cout << "34.50 = " << 3.450e1 << std::endl;
+    std::cout << "0.004000 = " << 4e-3 << std::endl;
+    std::cout << "123.005 = " << 1.23005e2 << std::endl;
+    std::cout << "146000 = " << 1.46e5 << std::endl;
+}
+
+//генерация кода для проверки истинности выражений
+#define CHECK_EXPRESSION(expr) std::cout << #expr" = " << std::boolalpha << expr << std::endl;
+
+void task_5() {
+    CHECK_EXPRESSION( ((true && true) || false) )
+    CHECK_EXPRESSION( ((false && true) || true) )
+    CHECK_EXPRESSION( ((false && true) || false || true) )
+    CHECK_EXPRESSION( ((5 > 6 || 4 > 3) && (7 > 8)) )
+    CHECK_EXPRESSION( (!(7 > 6 || 3 > 4)) )
+
+    const
+            (( _ && _ ) || ( !_) && (_||_))
+            ((_ &&_ ) || (_&&_) || (!_))
+            ((_ || _) && (_ || _) && (_||_))
+            ((_ >_) && (_<_) && (_!=_))
+}
 
 
 int main() {
@@ -206,9 +259,23 @@ int main() {
     task_1();
 #endif
 
-#if 1
+#if 0
     //Организуйте вывод размеров основных типов данных C++
     task_2();
+#endif
+
+#if 0
+    //Задание должно предложить пользователю ввести 10 чисел с плавающей точкой
+    task_3();
+#endif
+
+#if 0
+    //Задание должно переводить следующие числа из существующей записи в экспоненциальную запись в стиле языка C++
+    task_4();
+#endif
+
+#if 1
+    task_5();
 #endif
 
     return 0;
