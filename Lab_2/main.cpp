@@ -8,6 +8,8 @@
 */
 
 #include <iostream>
+#include <bitset> // для работы с двоичным представлением значения
+#include <limits> // для работы со значениями свойств арифметических типов
 
 //Формула Брока
 double brock(const int height, const bool sex) {
@@ -56,6 +58,8 @@ std::string calc_index_norm(const double index, const double norm) {
         return "Имеются проблемы с лишним весом";
     } else if (index < norm) {
         return "Дефицит массы тела";
+    } else {
+        return "Неклассифицируемые данные";
     }
 }
 
@@ -78,6 +82,8 @@ std::string index_weight_age(const int height, const double weight, const bool s
     } else if (age > 55) {
         const double norm = sex ? 26.6 : 27.3; //расчёт нормы для данного возраста с учётом пола
         return calc_index_norm(index, norm);
+    } else {
+        return "Неклассифицируемые данные";
     }
 }
 
@@ -124,14 +130,86 @@ void task_1() {
     }
 }
 
+//отображение типа и занимаемого им места в байтах
+void show_sizeof(const std::string type, const int size) {
+    std::cout << type << ": " << size << " bytes" << std::endl;
+}
+
+
+//генерация блоков кода по типу x
+#define TYPE_SIZE(type) {  const type value{0}; \
+                    show_sizeof(#type, sizeof(value)); }
+
+
+#define TYPE_MIN_MAX(type) { \
+    std::cout << "Binary -------" << std::endl; \
+    std::cout << "- min: " << std::bitset<8>{std::numeric_limits<type>::min()} << std::endl; \
+    std::cout << "- max: " << std::bitset<8>{std::numeric_limits<type>::max()} << std::endl; \
+    std::cout << "Octal -------" << std::endl; \
+    std::cout << "- min: " << std::oct << std::numeric_limits<type>::min() << std::endl; \
+    std::cout << "- max: " << std::oct << std::numeric_limits<type>::max() << std::endl; \
+    std::cout << "Decimal -------" << std::endl; \
+    std::cout << "- min: " << std::dec << std::numeric_limits<type>::min() << std::endl; \
+    std::cout << "- max: " << std::dec << std::numeric_limits<type>::max() << std::endl; \
+    std::cout << "hexadecimal -------" << std::endl; \
+    std::cout << "- min: " << std::hex << std::numeric_limits<type>::min() << std::endl; \
+    std::cout << "- max: " << std::hex << std::numeric_limits<type>::max() << std::endl; \
+}
+
+void task_2() {
+
+    TYPE_SIZE(int)
+    TYPE_SIZE(float)
+    TYPE_SIZE(double)
+    TYPE_SIZE(char)
+    TYPE_SIZE(bool)
+
+    std::cout << std::endl;
+
+    TYPE_SIZE(unsigned int)
+    TYPE_SIZE(signed int)
+    TYPE_SIZE(short int)
+    TYPE_SIZE(long int)
+    TYPE_SIZE(long double)
+    TYPE_SIZE(unsigned char)
+    TYPE_SIZE(unsigned short)
+    TYPE_SIZE(unsigned long long)
+
+    std::cout << std::endl;
+
+    TYPE_MIN_MAX(unsigned short)
+
+    std::cout << std::endl;
+
+    TYPE_MIN_MAX(unsigned int)
+
+    std::cout << std::endl;
+
+    // TYPE_MIN_MAX(char)
+
+    // std::cout << std::endl;
+
+    TYPE_MIN_MAX(u_int32_t)
+
+    // std::cout << std::endl;
+
+    // TYPE_MIN_MAX(double)
+
+}
+
+
+
 int main() {
 
-
-#if 1
+#if 0
     //Калькулятор для расчета идеального веса
     task_1();
 #endif
 
+#if 1
+    //Организуйте вывод размеров основных типов данных C++
+    task_2();
+#endif
 
     return 0;
 }
