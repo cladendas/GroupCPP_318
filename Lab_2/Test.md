@@ -50,7 +50,7 @@ int z;
 std::cout << z << std::endl; // мусор, потому что z не инициализирована
 }
 ```
-# b)
+## b)
 ```cpp
 #include <iostream>
 int main() {
@@ -60,15 +60,17 @@ x = x++;
 std::cout << x << "\n"; // 1, но это неопределённое поведение
 }
 ```
-c)
+## c)
+```cpp
 #include <iostream>
 int main(){
 int x = 1;
 std::cout << ++x << "\n";
 }
-3. Найдите в программе ошибки, можно только что-то добавлять убирать нельзя, и выведите
-результат.
-a)
+```
+# 3. Найдите в программе ошибки, можно только что-то добавлять убирать нельзя, и выведите результат.
+## a)
+```cpp
 const int option_1 = 0;
 const int option_2 = 1;
 const int option_3 = 2;
@@ -87,6 +89,32 @@ cin << Bit 3 has value: " << bits.test() << '\n';
 cin << "Bit 7 has value: " << bits.test() < '\n';
 cin<< "All the bits: " << bits << '\n;
 }
+```
+### a) решение
+```cpp
+#include <iostream>
+#include <bitset>
+
+const int option_1 = 0;
+const int option_2 = 1;
+const int option_3 = 2;
+const int option_4 = 3;
+const int option_5 = 4;
+const int option_6 = 5;
+const int option_7 = 6;
+const int option_8{7};
+int main() {
+    std::bitset<8> bits(0x4);
+    bits.set(option_1);
+    bits.flip(option_3);
+    bits.reset(option_7);
+    std::cout << "Bit 1 has value: " << bits.test(option_1) << '\n';
+    std::cout << "Bit 3 has value: " << bits.test(option_3) << '\n';
+    std::cout << "Bit 7 has value: " << bits.test(option_7) << '\n';
+    std::cout << "All the bits: " << bits << '\n';
+}
+```
+
 b)
 int main()
 uint8_t a(1), b(1), c(3
