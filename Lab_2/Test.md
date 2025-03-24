@@ -142,8 +142,8 @@ int main() {
 }
 ```
 
-
-c)
+## c)
+```cpp
 int main() {
 int x (08);
 std::cout << "x: " << x < endl;
@@ -153,6 +153,21 @@ int bin(0);
 bin = 0b101;
 out << "bin 0b101: " << bin << std::endl
 }
+```
+### c) решение
+```cpp
+#include <iostream>
+
+int main() {
+    int x(8);
+    std::cout << "x: " << x << std::endl;
+    int y = 0x5;
+    std::cout << "y: " << y << std::endl;
+    int bin(0);
+    bin = 0b101;
+    std::cout << "bin 0b101: " << bin << std::endl;
+}
+```
 d)
 int main() {
 int x{8};
