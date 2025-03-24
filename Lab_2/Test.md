@@ -12,7 +12,7 @@ float f;
 f = 3,2;
 }}
 ```
-## 1. Решение
+## 1. решение
 ```cpp
 int main() {
     short a(65599);
@@ -115,7 +115,8 @@ int main() {
 }
 ```
 
-b)
+## b)
+```cpp
 int main()
 uint8_t a(1), b(1), c(3
 a = a < 1;
@@ -124,6 +125,24 @@ b <<= 1;
 printf("b: %d \n", b);
 c |= 1;
 print("c: \n", c);
+```
+
+### b) решение
+```cpp
+#include <stdio.h>
+
+int main() {
+    uint8_t a(1), b(1), c(3);
+    a = a < 1;
+    printf("a: %d\n", a);
+    b <<= 1;
+    printf("b: %d\n", b);
+    c |= 1;
+    printf("c: %d\n", c);
+}
+```
+
+
 c)
 int main() {
 int x (08);
