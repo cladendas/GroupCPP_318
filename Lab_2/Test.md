@@ -30,7 +30,7 @@ int main() {
 ```
 
 # 2. Какие значения выводит эта программа?
-а) Почему z выводит неожиданные значения?
+## а) Почему z выводит неожиданные значения?
 ```cpp
 #include <iostream>
 int main() {
@@ -50,14 +50,16 @@ int z;
 std::cout << z << std::endl; // мусор, потому что z не инициализирована
 }
 ```
-b)
+# b)
+```cpp
 #include <iostream>
 int main() {
 int x = 1;
 x = x++;
 
-std::cout << x << "\n";
+std::cout << x << "\n"; // 1, но это неопределённое поведение
 }
+```
 c)
 #include <iostream>
 int main(){
