@@ -1,6 +1,6 @@
 
 # 1. Найдите в программе ошибки, представите ниже рабочий вариант программы.
-```cpp
+```ccpp
 nt main() {
 short a;
 a(65599);
@@ -29,25 +29,27 @@ int main() {
 }
 ```
 
-2. Какие значения выводит эта программа?
+#2. Какие значения выводит эта программа?
 а) Почему z выводит неожиданные значения?
+```cpp
 #include <iostream>
 int main() {
 int x = 5;
 x = x - 2;
 //a
-std::cout << x << std::endl; // #a
+std::cout << x << std::endl; // 3, потому что 5 - 2
 int y = x;
 //b
-std::cout << y << std::endl; // #b
+std::cout << y << std::endl; // 3, потому что y = x
 //c
-std::cout << x + y << std::endl; // #c
+std::cout << x + y << std::endl; // 6, потому что 3 + 3
 //d
-std::cout << x << std::endl; // #d
+std::cout << x << std::endl; // 3, потому что 5 - 2
 int z;
 //e
-std::cout << z << std::endl; // #e
+std::cout << z << std::endl; // мусор, потому что z не инициализирована
 }
+```
 b)
 #include <iostream>
 int main() {
