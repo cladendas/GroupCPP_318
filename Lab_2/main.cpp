@@ -237,18 +237,79 @@ void task_4() {
 //генерация кода для проверки истинности выражений
 #define CHECK_EXPRESSION(expr) std::cout << #expr" = " << std::boolalpha << expr << std::endl;
 
-void task_5() {
-    CHECK_EXPRESSION( ((true && true) || false) )
-    CHECK_EXPRESSION( ((false && true) || true) )
-    CHECK_EXPRESSION( ((false && true) || false || true) )
-    CHECK_EXPRESSION( ((5 > 6 || 4 > 3) && (7 > 8)) )
-    CHECK_EXPRESSION( (!(7 > 6 || 3 > 4)) )
+enum class Nums {
+    ONE  = 1,
+    TWO,
+    THREE,
+    FOURE,
+    FIVE,
+    SIX
+};
 
-    const
-            (( _ && _ ) || ( !_) && (_||_))
-            ((_ &&_ ) || (_&&_) || (!_))
-            ((_ || _) && (_ || _) && (_||_))
-            ((_ >_) && (_<_) && (_!=_))
+void task_5() {
+    {
+        CHECK_EXPRESSION( ((true && true) || false) )
+        CHECK_EXPRESSION( ((false && true) || true) )
+        CHECK_EXPRESSION( ((false && true) || false || true) )
+        CHECK_EXPRESSION( ((5 > 6 || 4 > 3) && (7 > 8)) )
+        CHECK_EXPRESSION( (!(7 > 6 || 3 > 4)) )
+    }
+
+    {
+        const bool a = true;
+        const bool b = true;
+        const bool c = false;
+        const bool d = false;
+        const bool e = true;
+        const bool f = true;
+
+        std::cout << std::boolalpha;
+        std::cout << ( ((a && b) || ( !c) && (d || f)) ) << std::endl;
+        std::cout << ( ((a && b) || (c && d) || (!e)) ) << std::endl;
+        std::cout << ( ((a || b) && (c || d) && (e || f)) ) << std::endl;
+
+        std::cout << ( ((Nums::ONE > Nums::TWO) && (Nums::THREE < Nums::FOURE) && (Nums::FIVE != Nums::SIX)) ) << std::endl;
+
+        std::cout << "Закон де Моргана !(a && B) == !a || !b" << " --- " << ( !(a && b) == !a || !b ) << std::endl;
+        std::cout << "Закон де Моргана !(a || B) == !a && !b" << " --- " << ( !(a || b) == !a && !b ) << std::endl;
+    }
+
+    {
+        std::cout << "Введите через пробел четыре целых числа: ";
+        int x;
+        int y;
+        int z;
+        int v;
+
+        std::cin >> x >> y >> z;
+
+        std::cout << "1) " << "x = 3 + 4 + 5 = " << x + 3 + 4 + 5 << std::endl;
+        std::cout << "2) " << "x = y = x = " << (x == y == z) << std::endl;
+        z *= ++y + 5;
+        std::cout << "3) " << "z *= ++y + 5 = " << z << std::endl;
+
+        bool logicValue;
+        logicValue = x || y && z || v;
+        std::cout << "logicValue = x || y && z || v = " << logicValue << std::endl;
+    }
+
+    {
+        std::cout << "Введите число в диапазоне от 0 до 2^n, где n=4: ";
+        unsigned int num;
+        std::cin >> num;
+        std::cout << "Введите число, на которое необходимо сдвинуть число влево: ";
+        unsigned int shift;
+        std::cin >> shift;
+
+        num <<= shift;
+
+        std::cout << num << std::endl;
+        std::cout << std::bitset<8>(num) << std::endl;
+        std::cout << std::hex << num << std::endl;
+        std::cout << std::oct << num << std::endl;
+
+    }
+
 }
 
 
