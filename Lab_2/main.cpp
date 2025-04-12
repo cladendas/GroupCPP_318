@@ -135,6 +135,11 @@ void show_sizeof(const std::string type, const int size) {
     std::cout << type << ": " << size << " bytes" << '\n';
 }
 
+//кол-во бит в байте
+#define BITE_BYTES 8
+
+//для определения кол-ва разрядов
+#define COUNT_BITS sizeof(value) * BITE_BYTES
 
 //генерация блоков кода по типу type
 #define TYPE_SIZE(type) {  const type value{0}; \
@@ -142,10 +147,10 @@ void show_sizeof(const std::string type, const int size) {
 
 //генерация блоков кода для вывода мин и макс значений тип type
 #define TYPE_MIN_MAX(type) { \
-    const unsigned short bits = 16; \
+    const type value = 0; \
     std::cout << "Binary" << '\n'; \
-    std::cout << "- min: " << std::bitset<bits>{std::numeric_limits<type>::min()} << '\n'; \
-    std::cout << "- max: " << std::bitset<bits>{std::numeric_limits<type>::max()} << '\n'; \
+    std::cout << "- min: " << std::bitset<COUNT_BITS>{std::numeric_limits<type>::min()} << '\n'; \
+    std::cout << "- max: " << std::bitset<COUNT_BITS>{std::numeric_limits<type>::max()} << '\n'; \
     std::cout << "Octal" << '\n'; \
     std::cout << "- min: " << std::oct << std::numeric_limits<type>::min() << '\n'; \
     std::cout << "- max: " << std::oct << std::numeric_limits<type>::max() << '\n'; \
@@ -320,7 +325,7 @@ int main() {
     task_1();
 #endif
 
-#if 0
+#if 1
     //Организуйте вывод размеров основных типов данных C++
     task_2();
 #endif
@@ -335,7 +340,7 @@ int main() {
     task_4();
 #endif
 
-#if 1
+#if 0
     task_5();
 #endif
 
