@@ -180,6 +180,24 @@ elif
 }
 ```
 
+# f) 🟩
+```cpp
+#include <iostream>
+
+#define VALUE 99
+
+int main() {
+    
+#if VALUE == 0
+    std::cout << VALUE <<"\n";
+#elif VALUE == 1
+    std::cout << VALUE <<"\n";
+#else
+    std::cout << "NULL" <<"\n";
+#endif
+}
+```
+
 # g) 🟥
 ```cpp
 namespace Mix {
@@ -194,6 +212,29 @@ enum class Colors {
 };
 int main() {
     Fruits fruit = Fruits::LEMON;
+    std::cout << "MIX\n";
+    return 1;
+}
+```
+
+# g) 🟩
+```cpp
+#include <iostream>
+
+namespace Mix {
+    enum class Fruits {
+        LEMON,
+        APPLE
+    };
+    
+    enum class Colors {
+        RED,
+        BLACK
+    };
+}
+
+int main() {
+    Mix::Fruits fruit = Mix::Fruits::LEMON;
     std::cout << "MIX\n";
     return 1;
 }
@@ -220,6 +261,27 @@ auto main()
     std::cout << DoMath::add(5, 4) << '\n';
 
     std::cout << ::subtract(5, 4) << '\n';
+    return 0;
+}
+```
+
+# h) 🟩
+```cpp
+#include <iostream>
+
+namespace DoMath {
+    int subtract(int x, int y) {
+        return x - y;
+    }
+    
+    int add(int x, int y) {
+        return x + y;
+    }
+}
+
+int main() {
+    std::cout << DoMath::add(5, 4) << '\n';
+    std::cout << DoMath::subtract(5, 4) << '\n';
     return 0;
 }
 ```
