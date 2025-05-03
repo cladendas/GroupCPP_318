@@ -29,6 +29,7 @@ int main() {
   return 0;
 }
 ```
+
 # b) 🟥
 ```cpp
 int return() {
@@ -79,6 +80,20 @@ int main ()
 }
 ```
 
+# c) 🟩
+```cpp
+#include <iostream>
+
+void prints() {
+    std::cout << "O_o" << '\n';
+}
+
+int main (){
+    prints();
+    return 0;
+}
+```
+
 # d) 🟥
 ```cpp
 int getNumbers()
@@ -91,6 +106,22 @@ int main()
     std::cout << getNumbers(
     std::cout << getNumbers)
     std::cout << getNumbers
+    return 0;
+}
+```
+
+# d) 🟩
+```cpp
+#include <iostream>
+
+int getNumbers() {
+    return 6;
+}
+
+int main() {
+    std::cout << getNumbers() << '\n';
+    std::cout << getNumbers() << '\n';
+    std::cout << getNumbers() << '\n';
     return 0;
 }
 ```
@@ -113,6 +144,25 @@ int main() {
     constexpr y(x);
     std::cout << y << std::endl;
         return 0;
+}
+```
+
+# e) 🟩
+```cpp
+#include <iostream>
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+int main() {
+    std::cout << multiply(7, 8) << '\n';
+    
+    int x;
+    std::cin >> x;
+    const int y(x);
+    std::cout << y << std::endl;
+    return 0;
 }
 ```
 
