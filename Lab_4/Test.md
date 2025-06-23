@@ -172,3 +172,38 @@ int main() {
 
 //этот код ничего не выводит
 ```
+
+# f) 🟥
+```cpp
+int main() {
+short value = 13;
+short value_1 = 100;
+short *ptr = &value;
+std::cout << &value << '\n';
+std::cout << (value +=1) << '\n';
+ptr = 9;
+std::cout << (value = value_1 + *ptr) << '\n';
+std::cout << "Результат: " << value << '\n';
+}
+```
+
+## f) 🟩
+```cpp
+#include <iostream>
+
+int main() {
+    short value = 13;
+    short value_1 = 100;
+    short *ptr = &value;
+    std::cout << &value << '\n';
+    std::cout << (value +=1) << '\n';
+    *ptr = 9;
+    std::cout << (value = value_1 + *ptr) << '\n';
+    std::cout << "Результат: " << value << '\n';
+}
+
+// 0x16fb2653e
+// 14
+// 109
+// Результат: 109
+```
